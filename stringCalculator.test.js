@@ -59,3 +59,9 @@ test('Ignore number bigger than 1000', () => {
         stringCalculator('2,1001')
      ).toBe(2)
 })
+
+test('Variable length delimiter case', () => {
+    expect(
+        stringCalculator('//[***]\n1***2***3')
+     ).toBe(6)
+})
