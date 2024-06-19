@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1718767085862" clover="3.2.0">
-  <project timestamp="1718767085862" name="All files">
+<coverage generated="1718767512264" clover="3.2.0">
+  <project timestamp="1718767512264" name="All files">
     <metrics statements="55" coveredstatements="55" conditionals="22" coveredconditionals="22" methods="9" coveredmethods="9" elements="86" coveredelements="86" complexity="0" loc="55" ncloc="55" packages="1" files="1" classes="1"/>
     <file name="stringCalculator.js" path="C:\Users\arvin\Desktop\IncoByte\IncubyteTDDAssessment\stringCalculator.js">
       <metrics statements="55" coveredstatements="55" conditionals="22" coveredconditionals="22" methods="9" coveredmethods="9"/>
