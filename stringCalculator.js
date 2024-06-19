@@ -26,7 +26,6 @@ const add = (numbers) => {
     if (numbers[2] !== "[") {
       delimiter = numbers[2];
       numbers = numbers.slice(3);
-      console.log(numbers);
     } else {
       const isMultipleDelimiterPresent =
         numbers.split("").filter((char) => char === "[").length > 1;
