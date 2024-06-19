@@ -29,3 +29,15 @@ test('\n as delimiter', () => {
         stringCalculator('1\n2,3')
      ).toBe(6)
 })
+
+test('support any delimiter, ; as delimiter', () => {
+    expect(
+        stringCalculator('//;\n1;2')
+     ).toBe(3)
+})
+
+test('support any delimiter, $ as delimiter', () => {
+    expect(
+        stringCalculator('//$\n1$2$5')
+     ).toBe(8)
+})
