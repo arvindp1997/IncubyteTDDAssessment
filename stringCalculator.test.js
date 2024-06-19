@@ -23,3 +23,9 @@ test('any amount of numbers', () => {
         stringCalculator('1,2,3,4,5')
      ).toBe(15)
 })
+
+test('\n as delimiter', () => {
+    expect(
+        stringCalculator('1\n2,3')
+     ).toBe(6)
+})
