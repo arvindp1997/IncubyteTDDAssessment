@@ -11,8 +11,8 @@ const add = (numbers) => {
   if (numbers.includes("\n")) {
     numbers = numbers.replaceAll("\n", delimiter);
   }
-  const nums = numbers.split(delimiter).map((num) => Number(num));
-
+  const nums = numbers.split(delimiter).map((num) => Number(num)).filter((num) => num <= 1000)
+  
   nums.forEach((num) => {
     if (num < 0) {
       isNegativePresent = true;

@@ -53,3 +53,9 @@ test('Multiple negative case', () => {
         stringCalculator('-1,-2,3')
      ).toBe(0)
 })
+
+test('Ignore number bigger than 1000', () => {
+    expect(
+        stringCalculator('2,1001')
+     ).toBe(2)
+})

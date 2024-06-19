@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1718763757107" clover="3.2.0">
-  <project timestamp="1718763757107" name="All files">
-    <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="10" methods="5" coveredmethods="5" elements="39" coveredelements="39" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
+<coverage generated="1718764065899" clover="3.2.0">
+  <project timestamp="1718764065899" name="All files">
+    <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="6" elements="40" coveredelements="40" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
     <file name="stringCalculator.js" path="C:\Users\arvin\Desktop\IncoByte\IncubyteTDDAssessment\stringCalculator.js">
-      <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="10" methods="5" coveredmethods="5"/>
+      <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
-      <line num="3" count="9" type="stmt"/>
-      <line num="5" count="9" type="stmt"/>
-      <line num="6" count="9" type="stmt"/>
-      <line num="7" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="3" count="10" type="stmt"/>
+      <line num="5" count="10" type="stmt"/>
+      <line num="6" count="10" type="stmt"/>
+      <line num="7" count="10" type="cond" truecount="2" falsecount="0"/>
       <line num="8" count="2" type="stmt"/>
       <line num="9" count="2" type="stmt"/>
-      <line num="11" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="10" type="cond" truecount="2" falsecount="0"/>
       <line num="12" count="3" type="stmt"/>
-      <line num="14" count="25" type="stmt"/>
-      <line num="16" count="9" type="stmt"/>
-      <line num="17" count="25" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="27" type="stmt"/>
+      <line num="16" count="10" type="stmt"/>
+      <line num="17" count="26" type="cond" truecount="2" falsecount="0"/>
       <line num="18" count="3" type="stmt"/>
       <line num="19" count="3" type="stmt"/>
-      <line num="23" count="25" type="stmt"/>
-      <line num="25" count="9" type="stmt"/>
-      <line num="27" count="9" type="stmt"/>
-      <line num="28" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="26" type="stmt"/>
+      <line num="25" count="10" type="stmt"/>
+      <line num="27" count="10" type="stmt"/>
+      <line num="28" count="10" type="cond" truecount="2" falsecount="0"/>
       <line num="29" count="6" type="stmt"/>
       <line num="30" count="2" type="stmt"/>
       <line num="33" count="2" type="stmt"/>
-      <line num="35" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="35" count="10" type="cond" truecount="2" falsecount="0"/>
       <line num="38" count="1" type="stmt"/>
     </file>
   </project>
