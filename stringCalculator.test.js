@@ -41,3 +41,15 @@ test('support any delimiter, $ as delimiter', () => {
         stringCalculator('//$\n1$2$5')
      ).toBe(8)
 })
+
+test('single negative case', () => {
+    expect(
+        stringCalculator('-1,2,3')
+     ).toBe(0)
+})
+
+test('Multiple negative case', () => {
+    expect(
+        stringCalculator('-1,-2,3')
+     ).toBe(0)
+})

@@ -1,19 +1,36 @@
 const add = (numbers) => {
-    let delimiter = ','
-    if(numbers.includes('//')){
-        delimiter=numbers[2]
-        numbers=numbers.slice(3)
+  let isNegativePresent = false;
+  let delimiter = ",";
+  if (numbers.includes("//")) {
+    delimiter = numbers[2];
+    numbers = numbers.slice(3);
+  }
+  if (numbers.includes("\n")) {
+    numbers = numbers.replaceAll("\n", delimiter);
+  }
+  const nums = numbers.split(delimiter).map((num) => Number(num));
+
+  nums.forEach((num) => {
+    if (num < 0) {
+      isNegativePresent = true;
+      return;
     }
-    if(numbers.includes('\n')){
-        numbers = numbers.replaceAll('\n', delimiter)
+  });
+
+  const sum = nums.reduce((acc, curr) => acc + curr, 0);
+
+  let negativeNumbers = [];
+
+  try {
+    if (isNegativePresent) {
+      negativeNumbers = nums.filter((num) => num < 0);
+      throw new Error("negatives not allowed -");
     }
-    const nums = numbers.split(delimiter).map((num) => Number(num))
-    const sum = nums.reduce((acc, curr) => acc + curr, 0)
-    return sum
-}
+  } catch (err) {
+    console.error(err.message, negativeNumbers);
+  }
+  return !isNegativePresent ? sum : 0;
+};
 
-
-module.exports = add
-
-
+module.exports = add;
 
