@@ -1,4 +1,7 @@
+let functionInvokeCount = 0
 const add = (numbers) => {
+    functionInvokeCount++
+    //console.log({ functionInvokeCount})
   let isNegativePresent = false;
   let delimiter = ",";
   if (numbers.includes("//")) {
@@ -33,4 +36,3 @@ const add = (numbers) => {
 };
 
 module.exports = add;
-
