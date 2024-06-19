@@ -17,3 +17,9 @@ test('two number', () => {
         stringCalculator('1,5')
      ).toBe(6)
 })
+
+test('any amount of numbers', () => {
+    expect(
+        stringCalculator('1,2,3,4,5')
+     ).toBe(15)
+})
