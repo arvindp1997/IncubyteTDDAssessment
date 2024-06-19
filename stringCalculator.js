@@ -1,18 +1,23 @@
 const getDelimiters = (str) => {
   let allDelimiters = [];
-  let del = "";
-  let delStart = false;
+  let currentDelimiter = "";
+  let isDelimiterStarted = false;
+
   for (let i = 0; i < str.length; i++) {
     if (str[i - 1] === "[") {
-      del += str[i];
-      delStart = true;
-    } else if (delStart && str[i] !== "]") del += str[i];
+      currentDelimiter += str[i];
+      isDelimiterStarted = true;
+    } else if (isDelimiterStarted && str[i] !== "]") {
+      currentDelimiter += str[i];
+    }
+
     if (str[i] === "]") {
-      allDelimiters.push(del);
-      del = "";
-      delStart = false;
+      allDelimiters.push(currentDelimiter);
+      currentDelimiter = "";
+      isDelimiterStarted = false;
     }
   }
+
   return allDelimiters;
 };
 
@@ -22,6 +27,7 @@ const add = (numbers) => {
   //console.log({ functionInvokeCount})
   let isNegativePresent = false;
   let delimiter = ",";
+
   if (numbers.includes("//")) {
     if (numbers[2] !== "[") {
       delimiter = numbers[2];
@@ -29,20 +35,21 @@ const add = (numbers) => {
     } else {
       const isMultipleDelimiterPresent =
         numbers.split("").filter((char) => char === "[").length > 1;
+
       if (!isMultipleDelimiterPresent) {
         numbers = numbers.slice(2);
-        let del = "";
+        let currentDelimiter = "";
         let i = 1;
         while (numbers[i] !== "]") {
-          del += numbers[i];
+          currentDelimiter += numbers[i];
           i++;
         }
-        delimiter = del;
+        delimiter = currentDelimiter;
         numbers = numbers.slice(i);
       } else {
         const allDelimiters = getDelimiters(numbers);
-        allDelimiters.forEach((del) => {
-          numbers = numbers.replaceAll(del, delimiter);
+        allDelimiters.forEach((currentDelimiter) => {
+          numbers = numbers.replaceAll(currentDelimiter, delimiter);
         });
       }
     }
@@ -63,7 +70,6 @@ const add = (numbers) => {
   });
 
   const sum = nums.reduce((acc, curr) => acc + curr, 0);
-
   let negativeNumbers = [];
 
   try {
@@ -78,4 +84,3 @@ const add = (numbers) => {
 };
 
 module.exports = add;
-

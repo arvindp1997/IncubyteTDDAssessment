@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>59/59</span>
             </div>
         
             
@@ -145,21 +145,30 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,14 +178,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -211,7 +221,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
@@ -226,22 +235,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const getDelimiters = (str) =&gt; {
   let allDelimiters = [];
-  let del = "";
-  let delStart = false;
+  let currentDelimiter = "";
+  let isDelimiterStarted = false;
+&nbsp;
   for (let i = 0; i &lt; str.length; i++) {
     if (str[i - 1] === "[") {
-      del += str[i];
-      delStart = true;
-    } else if (delStart &amp;&amp; str[i] !== "]") del += str[i];
+      currentDelimiter += str[i];
+      isDelimiterStarted = true;
+    } else if (isDelimiterStarted &amp;&amp; str[i] !== "]") {
+      currentDelimiter += str[i];
+    }
+&nbsp;
     if (str[i] === "]") {
-      allDelimiters.push(del);
-      del = "";
-      delStart = false;
+      allDelimiters.push(currentDelimiter);
+      currentDelimiter = "";
+      isDelimiterStarted = false;
     }
   }
+&nbsp;
   return allDelimiters;
 };
 &nbsp;
@@ -251,28 +264,29 @@ const add = (numbers) =&gt; {
   //console.log({ functionInvokeCount})
   let isNegativePresent = false;
   let delimiter = ",";
+&nbsp;
   if (numbers.includes("//")) {
     if (numbers[2] !== "[") {
       delimiter = numbers[2];
       numbers = numbers.slice(3);
-      console.log(numbers);
     } else {
       const isMultipleDelimiterPresent =
         numbers.split("").filter((char) =&gt; char === "[").length &gt; 1;
+&nbsp;
       if (!isMultipleDelimiterPresent) {
         numbers = numbers.slice(2);
-        let del = "";
+        let currentDelimiter = "";
         let i = 1;
         while (numbers[i] !== "]") {
-          del += numbers[i];
+          currentDelimiter += numbers[i];
           i++;
         }
-        delimiter = del;
+        delimiter = currentDelimiter;
         numbers = numbers.slice(i);
       } else {
         const allDelimiters = getDelimiters(numbers);
-        allDelimiters.forEach((del) =&gt; {
-          numbers = numbers.replaceAll(del, delimiter);
+        allDelimiters.forEach((currentDelimiter) =&gt; {
+          numbers = numbers.replaceAll(currentDelimiter, delimiter);
         });
       }
     }
@@ -293,7 +307,6 @@ const add = (numbers) =&gt; {
   });
 &nbsp;
   const sum = nums.reduce((acc, curr) =&gt; acc + curr, 0);
-&nbsp;
   let negativeNumbers = [];
 &nbsp;
   try {
@@ -308,7 +321,6 @@ const add = (numbers) =&gt; {
 };
 &nbsp;
 module.exports = add;
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -316,7 +328,7 @@ module.exports = add;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-19T03:09:31.041Z
+                at 2024-06-19T03:18:05.843Z
             </div>
         <script src="prettify.js"></script>
         <script>
